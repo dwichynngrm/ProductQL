@@ -1,0 +1,68 @@
+﻿schema {
+	query: Query
+	mutation: Mutation
+}
+
+type Query {
+  users: [User]
+  products: [Product]
+}
+
+type Mutation {
+  addUser(input: AddUserInput): AddUserPayload
+  updateUser(id: Int!, input: AddUserInput): AddUserPayload
+  deleteUser(id: Int!): AddUserPayload
+  addProduct(input: AddProductInput): AddProductPayload
+  updateProduct(id: Int!, input: AddProductInput): AddProductPayload
+  deleteProduct(id: Int!): AddProductPayload
+}
+
+type AddUserPayload {
+  user: User
+}
+
+type AddProductPayload {
+  product: Product
+}
+
+type User {
+  id: Int!
+  fullName: String
+  email: String
+  username: String
+}
+
+type Product {
+  id: Int!
+  name: String
+  stock: Int!
+  price: Float!
+  created: DateTime!
+}
+
+input AddUserInput {
+  id: Int
+  fullName: String
+  email: String
+  username: String
+  password: String
+}
+
+input AddProductInput {
+  id: Int
+  name: String
+  stock: Int!
+  price: Float!
+}
+
+
+input IdUserInput {
+  id: Int!
+}
+
+input IdProductInput {
+  id: Int!
+}
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime
